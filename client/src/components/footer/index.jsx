@@ -1,0 +1,1 @@
+// /footer/index.js
