@@ -1,1 +1,1 @@
-// /footer/index.js
+// /footer/index.js 

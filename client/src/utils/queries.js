@@ -1,1 +1,1 @@
-// queries,js
+// queries.js 
