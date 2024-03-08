@@ -1,7 +1,21 @@
 # business-website
 
 # Features
-Home page with a brief introduction to the business and its services.
-Services page detailing the various landscaping services offered.
-Projects page showcasing past landscaping projects with descriptions and photos.
-Contact page with a contact form and business contact information.
+
+This is a website for a landscaping business, showcasing our services, projects, and contact information.
+
+## 1. Home Page
+
+A brief introduction to the business and its services.
+
+## 2. Services Page
+
+Details various landscaping services offered.
+
+## 3. Projects Page
+
+Showcases past landscaping projects with descriptions and photos.
+
+## 4. Contact Page
+
+Includes a contact form and business contact information.
