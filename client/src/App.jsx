@@ -1,18 +1,39 @@
-import React from "react";
+// import React from "react";
 import "./App.css";
+import { Outlet } from 'react-router-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import "tachyons";
+import Home from "../src/pages/Home";
 import Footer from "../src/components/footer";
 import Header from "../src/components/header";
-import Home from "../src/pages/Home";
 
-const App = () => {
+// const App = () => {
+//   return (
+//     <div>
+//       <Header />
+//       <Home />
+//       <Footer />
+//     </div>
+//   );
+// };
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
+function App() {
   return (
-    <div>
-      <Header />
-      <Home />
-      <Footer />
-    </div>
+    <ApolloProvider client={client}>
+      <div>
+        <Header />
+          <div>
+            <Outlet />
+          </div>
+        <Footer />
+      </div>
+    </ApolloProvider>
   );
-};
+}
 
 export default App;
