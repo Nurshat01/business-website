@@ -1,25 +1,42 @@
-/* header.css */
-
 .header {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .navbar-nav .nav-item {
-    margin-right: 15px;
-  }
-  
-  .navbar-nav .nav-link {
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #007bff;
-  }
-  
+  background-color: #333; 
+  padding: 10px 0;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: #fff; 
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff; 
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ccc;
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path stroke="rgba(255, 255, 255, 0.5)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+}
