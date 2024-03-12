@@ -7,6 +7,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      time: true
     },
     email: {
       type: String,
@@ -17,9 +18,9 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+      minlength: 5,
     },
   },
-
 );
 
 // hash user password
