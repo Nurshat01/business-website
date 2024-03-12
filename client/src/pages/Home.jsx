@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Home = () => {
-  return (
+const App = () => (
+  <div style={{ backgroundImage: 'url(client/background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh' }}>
     <div className="container">
-      <h1>Welcome to Your Company</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec feugiat lectus. Nullam gravida, nisl at cursus efficitur, turpis nulla dapibus lorem, eget venenatis eros libero non lorem. Curabitur nec quam a purus pellentesque efficitur.</p>
-      <p>Integer feugiat elementum felis, nec maximus quam varius at. Donec aliquet libero ut orci volutpat, nec tempus odio volutpat. In hac habitasse platea dictumst. Nam aliquam mauris vitae est congue, eget euismod risus consectetur.</p>
+      <h1>Welcome to My App</h1>
+      <p>This is a paragraph.</p>
     </div>
-  );
-};
+  </div>
+);
 
-export default Home;
+export default App;
