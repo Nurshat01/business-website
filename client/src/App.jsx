@@ -1,21 +1,13 @@
-// import React from "react";
-import "./App.css";
-import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import "tachyons";
-import Home from "../src/pages/Home";
-import Footer from "../src/components/footer";
-import Header from "../src/components/header";
+import { Outlet } from 'react-router-dom';
+import React from 'react';
+import './App.css';
+import 'tachyons';
 
-// const App = () => {
-//   return (
-//     <div>
-//       <Header />
-//       <Home />
-//       <Footer />
-//     </div>
-//   );
-// };
+import Footer from '../src/components/footer';
+import Header from '../src/components/header';
+import Home from '../src/pages/Home';
+import Login from '../src/components/login';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -26,10 +18,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
+        <Login />
         <Header />
-          <div>
-            <Outlet />
-          </div>
+        <div>
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </ApolloProvider>
