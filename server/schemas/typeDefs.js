@@ -2,9 +2,23 @@
 const typeDefs = `
   type User {
     _id: ID!
-    username: String!
+    firstName: String!
+    lastName: String!
     email: String!
     password: String!
+    serviceRequests: [ServiceRequest]!
+  }
+
+  type ServiceRequest {
+    serviceRequestId: ID
+    service: String!
+    description: String!
+  }
+
+  input ServiceRequestInput {
+    serviceRequestId: ID
+    service: String!
+    description: String!
   }
   
   type Auth {
@@ -13,15 +27,40 @@ const typeDefs = `
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
+    me: User
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): Auth
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addServiceRequest(service: ServiceRequestInput!): User
+    cancelServiceRequest(serviceRequestId: ID!): User
   }
-`
+`;
 
+// User review array field
+
+// reviews: [Review]!
+
+
+
+// Type and Input definitions for reviews
+
+// type Review {
+//   reviewId: ID!
+//   reviewBody: String!
+// }
+
+// input ReviewInput {
+//   reviewId: ID!
+//   reviewBody: String!
+// }
+
+
+
+// Mutations definitions for reviews
+
+// addReview(review: ReviewInput!): User
+// removeReview(reviewId: ID!): User
 
 module.exports = typeDefs;

@@ -1,13 +1,19 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const dateFormat = require('../utils/dateFormat');
+
+const ServiceRequestSchema = require('./ServiceRequest');
+// const ReviewSchema = require('./Review');
 
 const userSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
       required: true,
-      unique: true,
-      time: true
+    },
+    lastName: {
+      type: String,
+      required: true,
     },
     email: {
       type: String,
@@ -15,11 +21,33 @@ const userSchema = new Schema(
       unique: true,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
+    // phoneNumber: {
+    //   type: String,
+    //   unique: true,
+    //   match: [/.^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/, 'Must be a valid phone number!'],
+    // },
     password: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 8,
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+    serviceRequests: [
+      ServiceRequestSchema
+    ],
+    // reviews: [
+    //   ReviewSchema
+    // ],
+  },
+  {
+    toJSON: {
+        getters: true,
+        virtuals: true,
+      },
   },
 );
 
@@ -37,6 +65,14 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('serviceRequestCount').get(function () {
+  return this.serviceRequests.length;
+});
+
+// userSchema.virtual('reviewCount').get(function () {
+//   return this.reviews.length;
+// });
 
 const User = model('User', userSchema);
 

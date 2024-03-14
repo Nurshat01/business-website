@@ -3,20 +3,17 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        users: async () => {
-
-            return User.find();
-        },
-
-        user: async (parent, { username }) => {
-
-            return User.findOne({ username});
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id });
+            }
+            throw AuthenticationError;
         },
     },
 
     Mutation: {
-        createUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        createUser: async (parent, { firstName, lastName, email, password }) => {
+            const user = await User.create({ firstName, lastName, email, password });
             const token = signToken(user);
 
             return { token, user };
@@ -24,13 +21,11 @@ const resolvers = {
 
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-
             if (!user) {
                 throw AuthenticationError;
             };
 
             const correctPw = await user.isCorrectPassword(password);
-
             if (!correctPw) {
                 throw AuthenticationError;
             };
@@ -39,6 +34,32 @@ const resolvers = {
 
             return { token, user };
         },
+        addServiceRequest: async (parent, { service }, context) => {
+            if (context.user) {
+                const serviceRequestData = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { serviceRequests: service } },
+                    { new: true },
+                );
+
+                return serviceRequestData
+            }
+            throw AuthenticationError;
+            ('You need to be logged in!');
+        },
+        cancelServiceRequest: async (parent, { serviceRequestId }, context) => {
+            if (context.user) {
+                const serviceRequestData = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { serviceRequests: {serviceRequestId} } },
+                    { new: true },
+                );
+
+                return serviceRequestData
+            }
+            throw AuthenticationError;
+            ('You need to be logged in!');
+        }
     }
 };
 
