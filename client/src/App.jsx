@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import React from 'react';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
-import 'tachyons';
+import 'bulma/css/bulma.min.css';
 
 import Footer from '../src/components/footer';
 import Header from '../src/components/header';
@@ -32,6 +32,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 function App() {
   return (
     <ApolloProvider client={client}>
