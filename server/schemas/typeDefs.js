@@ -11,11 +11,23 @@ const typeDefs = `
     user:User
   }
   
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
+    user(username: String!): User
   }
-type Mutation {
-  addUser(email:String!,  password:String!): Auth 
+
+  type Mutation {
+    createUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+  }
+  
+  type Mutation {
+    addUser(email:String!,  password:String!): Auth 
 }
   
 `
