@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const dateFormat = require('../utils/dateFormat');
+const { formatDate } = require('../utils/formatDate');
 
 const ServiceRequestSchema = require('./ServiceRequest');
 // const ReviewSchema = require('./Review');
@@ -34,7 +34,7 @@ const userSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timestamp) => dateFormat(timestamp),
+      get: (timestamp) => formatDate(timestamp),
     },
     serviceRequests: [
       ServiceRequestSchema

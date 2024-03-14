@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 const { ObjectId } = require('mongoose').Types
-const dateFormat = require('../utils/dateFormat');
+const { formatDate } = require('../utils/formatDate');
 
 const ServiceRequestSchema = new Schema(
     {
@@ -20,7 +20,7 @@ const ServiceRequestSchema = new Schema(
       requestedAt: {
         type: Date,
         default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
+        get: (timestamp) => formatDate(timestamp),
       },
     },
     {

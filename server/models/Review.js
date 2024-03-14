@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 const { ObjectId } = require('mongoose').Types
-const dateFormat = require('../utils/dateFormat');
+const dateFormat = require('../utils/formatDate');
 
 const ReviewSchema = new Schema(
     {

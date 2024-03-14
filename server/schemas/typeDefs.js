@@ -6,6 +6,7 @@ const typeDefs = `
     lastName: String!
     email: String!
     password: String!
+    createdAt: String
     serviceRequests: [ServiceRequest]!
   }
 
@@ -13,10 +14,10 @@ const typeDefs = `
     serviceRequestId: ID
     service: String!
     description: String!
+    requestedAt: String
   }
 
   input ServiceRequestInput {
-    serviceRequestId: ID
     service: String!
     description: String!
   }
