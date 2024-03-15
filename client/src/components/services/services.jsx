@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 
 import Auth from '../utils/auth';
-import { addServiceRequestIds, getServiceRequestIds } from '../utils/localStorage';
+import { addServiceRequestIds, requestedServicesIds } from '../utils/localStorage';
 
 
 const ServicesOffered = () => {
@@ -11,7 +11,7 @@ const ServicesOffered = () => {
     const [requestedServices, setRequestedServices] = useState(getServiceRequestIds());
     
     useEffect(() => {
-        return () => saveBookIds(savedBookIds);
+        return () => addServiceRequestIds(requestedServicesIds);
       });
 
     const handleRequestService = async (serviceRequestId) => {
