@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Service } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -9,6 +9,16 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+        users: async () => {
+            const users = User.find();
+
+            return users;
+        }, 
+        services: async () => {
+            const services = Service.find();
+
+            return services;
+        }
     },
 
     Mutation: {
@@ -34,7 +44,17 @@ const resolvers = {
 
             return { token, user };
         },
-        addServiceRequest: async (parent, { service }, context) => {
+        addService: async (parent, { serviceName, description }) => {
+            const service = await Service.create({ serviceName, description });
+
+            return service;
+        },
+        removeService: async (parent, { serviceId }) => {
+            const service = await Service.findOneAndDelete({ _id: serviceId });
+
+            return service;
+        },
+        requestService: async (parent, { service }, context) => {
             if (context.user) {
                 const serviceRequestData = await User.findOneAndUpdate(
                     { _id: context.user._id },

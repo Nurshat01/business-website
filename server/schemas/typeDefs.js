@@ -6,22 +6,22 @@ const typeDefs = `
     lastName: String!
     email: String!
     password: String!
-    createdAt: String
-    serviceRequests: [ServiceRequest]!
+    createdAt: Date
+    serviceRequests: [ServiceRequest]
   }
 
-  type ServiceRequest {
-    serviceRequestId: ID
-    service: String!
+  type Service {
+    _id: ID!
+    serviceName: String!
     description: String!
-    requestedAt: String
   }
 
-  input ServiceRequestInput {
-    service: String!
+  input ServiceInput {
+    _id: ID!
+    serviceName: String!
     description: String!
   }
-  
+
   type Auth {
     token: ID!
     user: User
@@ -29,15 +29,28 @@ const typeDefs = `
 
   type Query {
     me: User
+    users: [User]
+    services: [Service]
   }
 
   type Mutation {
-    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addServiceRequest(service: ServiceRequestInput!): User
-    cancelServiceRequest(serviceRequestId: ID!): User
+    createUser(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+    ): Auth
+    login(
+      email: String!
+      password: String!
+    ): Auth
+    addService(serviceName: String!, description: String! ): Service
+    removeService(serviceId: ID!): Service
+    requestService(): User
+    cancelServiceRequest(): User
   }
 `;
+
 
 // User review array field
 

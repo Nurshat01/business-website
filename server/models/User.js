@@ -1,9 +1,23 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const { ObjectId } = require('mongoose').Types
 const { formatDate } = require('../utils/formatDate');
 
-const ServiceRequestSchema = require('./ServiceRequest');
 // const ReviewSchema = require('./Review');
+
+const serviceRequestSchema = new Schema(
+  {
+    service: { 
+      type: ObjectId,
+      ref: "Service",
+    },
+    requestedAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => formatDate(timestamp),
+    },
+  },
+);
 
 const userSchema = new Schema(
   {
@@ -36,9 +50,7 @@ const userSchema = new Schema(
       default: Date.now,
       get: (timestamp) => formatDate(timestamp),
     },
-    serviceRequests: [
-      ServiceRequestSchema
-    ],
+    serviceRequests: [serviceRequestSchema],
     // reviews: [
     //   ReviewSchema
     // ],
