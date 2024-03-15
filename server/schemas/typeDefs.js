@@ -11,7 +11,7 @@ const typeDefs = `
   }
 
   type ServiceRequest {
-    serviceRequestId: ID
+    serviceRequestId: ID!
     service: String!
     description: String!
     requestedAt: String
