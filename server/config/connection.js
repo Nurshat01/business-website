@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-// this is my default to local MongoDB
+// Determine MongoDB URI based on the environment
 const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/business-website';
 
 // Connecting to DB
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 5000 })
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -13,11 +13,10 @@ mongoose.connect(mongoURI)
     process.exit(1); // Exit the application on connection failure
   });
 
-// Handle connection events
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('MongoDB connection successful');
+// Handle MongoDB connection errors
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err.message);
 });
 
-module.exports = db;
+// Export Mongoose connection
+module.exports = mongoose.connection;
