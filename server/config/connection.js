@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/business-website';
 
 // Connecting to DB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI)
   .then(() => {
     console.log('Connected to MongoDB');
   })
