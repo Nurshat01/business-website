@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // this is my default to local MongoDB
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.0:27017/business-website';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/business-website';
 
 // Connecting to DB
 mongoose.connect(mongoURI)
