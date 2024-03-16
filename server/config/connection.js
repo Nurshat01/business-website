@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const mongoose = require('mongoose');
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/business-website';
 
 // Ensure the MongoDB URI is defined
 if (!mongoURI) {
