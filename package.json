@@ -20,6 +20,6 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bulma": "^0.9.4",
     "dotenv": "^16.4.5",
-    "mongodb": "^6.5.0"
+    "mongodb": "^4.17.2"
   }
 }
