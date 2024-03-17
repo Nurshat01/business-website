@@ -6,18 +6,16 @@ const typeDefs = `
     lastName: String!
     email: String!
     password: String!
-    createdAt: Date
     serviceRequests: [ServiceRequest]
   }
 
-  type Service {
-    _id: ID!
+  type ServiceRequest {
+    serviceRequestId: ID!
     serviceName: String!
     description: String!
   }
 
-  input ServiceInput {
-    _id: ID!
+  input ServiceRequestInput {
     serviceName: String!
     description: String!
   }
@@ -30,7 +28,6 @@ const typeDefs = `
   type Query {
     me: User
     users: [User]
-    services: [Service]
   }
 
   type Mutation {
@@ -40,14 +37,19 @@ const typeDefs = `
       email: String!
       password: String!
     ): Auth
+
     login(
       email: String!
       password: String!
     ): Auth
-    addService(serviceName: String!, description: String! ): Service
-    removeService(serviceId: ID!): Service
-    requestService(): User
-    cancelServiceRequest(): User
+
+    requestService(
+      serviceRequest: ServiceRequestInput!
+    ): User
+
+    cancelServiceRequest(
+      serviceRequestId: ID!
+    ): User
   }
 `;
 

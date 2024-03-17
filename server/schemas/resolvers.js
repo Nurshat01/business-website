@@ -1,4 +1,4 @@
-const { User, Service } = require('../models');
+const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -10,15 +10,16 @@ const resolvers = {
             throw AuthenticationError;
         },
         users: async () => {
-            const users = User.find();
+            const users = User.find()
+            .populate('serviceRequests');
 
             return users;
         }, 
-        services: async () => {
-            const services = Service.find();
+        // serviceRequests: async () => {
+        //     const serviceRequests = ServiceRequest.find();
 
-            return services;
-        }
+        //     return serviceRequests;
+        // }
     },
 
     Mutation: {
@@ -44,25 +45,15 @@ const resolvers = {
 
             return { token, user };
         },
-        addService: async (parent, { serviceName, description }) => {
-            const service = await Service.create({ serviceName, description });
-
-            return service;
-        },
-        removeService: async (parent, { serviceId }) => {
-            const service = await Service.findOneAndDelete({ _id: serviceId });
-
-            return service;
-        },
-        requestService: async (parent, { service }, context) => {
+        requestService: async (parent, { serviceRequest }, context) => {
             if (context.user) {
                 const serviceRequestData = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { serviceRequests: service } },
+                    { $addToSet: { serviceRequests: serviceRequest } },
                     { new: true },
                 );
 
-                return serviceRequestData
+                return serviceRequestData;
             }
             throw AuthenticationError;
             ('You need to be logged in!');
@@ -71,11 +62,11 @@ const resolvers = {
             if (context.user) {
                 const serviceRequestData = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { serviceRequests: {serviceRequestId} } },
+                    { $pull: { serviceRequests: {serviceRequestId}  } },
                     { new: true },
                 );
 
-                return serviceRequestData
+                return serviceRequestData;
             }
             throw AuthenticationError;
             ('You need to be logged in!');
