@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useMutation } from '@apollo/client';
+import { REQUEST_SERVICE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { addServiceRequestIds, requestedServicesIds } from '../utils/localStorage';
+import { addServiceRequestIds, getServiceRequestIds } from '../utils/localStorage';
 
-
-const ServicesOffered = () => {
+const Services = () => {
     // create state to hold requested service Ids
     const [requestedServices, setRequestedServices] = useState(getServiceRequestIds());
     
     useEffect(() => {
-        return () => addServiceRequestIds(requestedServicesIds);
+        return () => addServiceRequestIds(requestedServices);
       });
 
     const handleRequestService = async (serviceRequestId) => {
@@ -26,4 +26,4 @@ const ServicesOffered = () => {
     );
 };
 
-export default ServicesOffered;
+export default Services;

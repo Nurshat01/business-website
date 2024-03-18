@@ -11,12 +11,10 @@ const serviceRequestSchema = new Schema(
     serviceName: {
       type: String,
       required: true,
-      unique: true,
     },
     description: {
       type: String,
       required: true,
-      unique: true,
     },
     requestedAt: {
       type: Date,
