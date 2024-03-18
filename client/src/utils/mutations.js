@@ -1,15 +1,49 @@
-// mutations.js
 import {gql} from '@apollo/client'
-export const Mutation_USERS = gql `{users { _id username email password}}`
-// add user
+
 export const ADD_USER = gql`
- mutation addUser($email: String!, $password: String!) {
-   addUser(email: $email, password: $password) {
-     token
-     user {
-       _id
-       username
-     }
-   }
- }
-`;
+mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+  addUser(email: $email, password: $password) {
+    token
+    user {
+      _id
+      firstName
+    }
+  }
+}
+`
+
+export const LOGIN = gql`
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    user {
+      _id
+      firstName
+    }
+  }
+}
+`
+
+export const REQUEST_SERVICE = gql`
+mutation requestService($serviceRequest: ServiceRequestInput!) {
+  requestService(serviceRequest: $serviceRequest) {
+    serviceRequests {
+      serviceRequestId
+      serviceName
+      description
+    }
+  }
+}
+`
+
+export const CANCEL_SERVICE_REQUEST = gql`
+mutation cancelServiceRequest($serviceRequestId: ID!) {
+  cancelServiceRequest(serviceRequestId: $serviceRequestId) {
+    serviceRequests {
+      serviceRequestId
+      serviceName
+      description
+    }
+  }
+}
+`

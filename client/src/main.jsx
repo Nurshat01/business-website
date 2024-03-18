@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App.jsx';
 import Home from './pages/Home';
-// import ErrorPage from './pages/ErrorPage';
+// import Services from './pages/services';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -18,12 +18,15 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    //errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <Home />
-      }
+      },
+      // {
+      //   path: '/services',
+      //   element: <Services />
+      // },
     ],
   },
 ]);
