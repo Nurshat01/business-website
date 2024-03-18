@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App.jsx';
 import Home from './pages/Home';
-import Services from './pages/services';
+// import Services from './pages/services';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -23,10 +23,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />
       },
-      {
-        path: '/services',
-        element: <Services />
-      },
+      // {
+      //   path: '/services',
+      //   element: <Services />
+      // },
     ],
   },
 ]);
