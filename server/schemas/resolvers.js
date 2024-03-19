@@ -9,6 +9,17 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+        users: async () => {
+            const users = User.find()
+            .populate('serviceRequests');
+
+            return users;
+        }, 
+        // serviceRequests: async () => {
+        //     const serviceRequests = ServiceRequest.find();
+
+        //     return serviceRequests;
+        // }
     },
 
     Mutation: {
@@ -34,15 +45,15 @@ const resolvers = {
 
             return { token, user };
         },
-        addServiceRequest: async (parent, { service }, context) => {
+        requestService: async (parent, { serviceRequest }, context) => {
             if (context.user) {
                 const serviceRequestData = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { serviceRequests: service } },
+                    { $addToSet: { serviceRequests: serviceRequest } },
                     { new: true },
                 );
 
-                return serviceRequestData
+                return serviceRequestData;
             }
             throw AuthenticationError;
             ('You need to be logged in!');
@@ -51,11 +62,11 @@ const resolvers = {
             if (context.user) {
                 const serviceRequestData = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { serviceRequests: {serviceRequestId} } },
+                    { $pull: { serviceRequests: {serviceRequestId}  } },
                     { new: true },
                 );
 
-                return serviceRequestData
+                return serviceRequestData;
             }
             throw AuthenticationError;
             ('You need to be logged in!');
