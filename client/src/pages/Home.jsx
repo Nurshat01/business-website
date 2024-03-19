@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
-import 'bulma/css/bulma.min.css';
+import React from 'react';
 
-const App = () => {
-  const [selectedServices, setSelectedServices] = useState([]);
-  const [cart, setCart] = useState([]);
+const Home = () => {
+  // const [selectedServices, setSelectedServices] = useState([]);
+  // const [cart, setCart] = useState([]);
 
-  const services = ['Service 1', 'Service 2', 'Service 3', 'Service 4'];
+  // const services = ['Service 1', 'Service 2', 'Service 3', 'Service 4'];
 
-  const handleServiceSelect = (service) => {
-    if (selectedServices.includes(service)) {
-      setSelectedServices(selectedServices.filter((s) => s !== service));
-    } else {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
+  // const handleServiceSelect = (service) => {
+  //   if (selectedServices.includes(service)) {
+  //     setSelectedServices(selectedServices.filter((s) => s !== service));
+  //   } else {
+  //     setSelectedServices([...selectedServices, service]);
+  //   }
+  // };
 
-  const addToCart = () => {
-    setCart([...cart, ...selectedServices]);
-    setSelectedServices([]);
-  };
+  // const addToCart = () => {
+  //   setCart([...cart, ...selectedServices]);
+  //   setSelectedServices([]);
+  // };
 
-  const removeFromCart = (service) => {
-    setCart(cart.filter((item) => item !== service));
-  };
+  // const removeFromCart = (service) => {
+  //   setCart(cart.filter((item) => item !== service));
+  // };
 
   return (
     <div className="hero is-fullheight is-bold has-background-primary" style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="hero-body">
         <div className="container">
           <h1 className="title">Welcome to My App</h1>
-          <p className="subtitle">Select the services you're interested in:</p>
-          <div className="columns is-multiline">
+          {/* <p className="subtitle">Select the services you're interested in:</p> */}
+          {/* <div className="columns is-multiline">
             {services.map((service) => (
               <div key={service} className="column is-one-quarter">
                 <label className="checkbox">
@@ -39,11 +38,11 @@ const App = () => {
                 </label>
               </div>
             ))}
-          </div>
-          <button className="button is-primary" onClick={addToCart}>Add to Cart</button>
+          </div> */}
+          {/* <button className="button is-primary" onClick={addToCart}>Add to Cart</button> */}
         </div>
       </div>
-      {cart.length > 0 && (
+      {/* {cart.length > 0 && (
         <div className="hero-foot">
           <nav className="navbar is-light">
             <div className="container">
@@ -66,9 +65,9 @@ const App = () => {
             </ul>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
-export default App;
+export default Home;
