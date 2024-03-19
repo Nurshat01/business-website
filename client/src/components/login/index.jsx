@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const Login = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(null);
   const [email, setEmail] = useState('');
