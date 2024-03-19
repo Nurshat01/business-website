@@ -28,8 +28,9 @@ export const REQUEST_SERVICE = gql`
 mutation requestService($serviceRequest: ServiceRequestInput!) {
   requestService(serviceRequest: $serviceRequest) {
     serviceRequests {
-      serviceRequestId
+      serviceImage
       serviceName
+      price
       description
     }
   }
@@ -40,8 +41,9 @@ export const CANCEL_SERVICE_REQUEST = gql`
 mutation cancelServiceRequest($serviceRequestId: ID!) {
   cancelServiceRequest(serviceRequestId: $serviceRequestId) {
     serviceRequests {
-      serviceRequestId
+      serviceImage
       serviceName
+      price
       description
     }
   }

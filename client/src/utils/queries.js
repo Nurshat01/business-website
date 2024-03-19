@@ -5,7 +5,9 @@ query Me {
         me {
         serviceRequests {
             serviceRequestId
+            serviceImage
             serviceName
+            price
             description
         }
     }
