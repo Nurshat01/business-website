@@ -8,7 +8,15 @@ const serviceRequestSchema = new Schema(
       type: ObjectId,
       default: () => new ObjectId(),
     },
+    serviceImage:{
+      type: String,
+      required: true,
+    },
     serviceName: {
+      type: String,
+      required: true,
+    },
+    price: {
       type: String,
       required: true,
     },

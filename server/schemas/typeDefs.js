@@ -11,12 +11,16 @@ const typeDefs = `
 
   type ServiceRequest {
     serviceRequestId: ID!
+    serviceImage: String!
     serviceName: String!
+    price: String!
     description: String!
   }
 
   input ServiceRequestInput {
+    serviceImage: String!
     serviceName: String!
+    price: String!
     description: String!
   }
 

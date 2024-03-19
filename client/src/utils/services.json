@@ -1,0 +1,27 @@
+[
+    {
+        "serviceImage": "assets/grasscutting.jpg",
+        "serviceName": "Grass Cutting",
+        "price": "$20 per lawn for properties under an acre. $65 per lawn for properties ranging from 1 to 5 acres.",
+        "description": "We offer professional grass cutting services using our state-of-the-art riding lawn mower. Our equipment efficiently mulches leaves, sticks, and pinecones, ensuring a tidy finish. Our process is fast, easy, and contactless."
+
+    },
+    {
+        "serviceImage": "assets/treetrimming.jpg",
+        "serviceName": "Tree Trimming",
+        "price": "$40 per tree.",
+        "description": "Prevent accidents and property damage by entrusting us with your tree trimming needs. Our trained employees utilize the safest and most current tree trimming tools to complete the job quickly and efficiently."
+    },
+    {
+        "serviceImage": "assets/stump.jpg",
+        "serviceName": "Stump Removal",
+        "price": "$100 per stump removal. $25 to cover up with matching grass seed.",
+        "description": "Eliminate old tree stumps from your yard without the risk of unsightly scorch marks caused by burning. Our team swiftly removes stumps, digging them out and filling in the hole. For a small additional fee, we offer to match your grass seed and cover up the exposed dirt, leaving your yard looking pristine."
+    },
+    {
+        "serviceImage": "assets/flowers.jpg",
+        "serviceName": "Planting Service",
+        "price": "$10 for flowers, $20 for shrubs, $50 for trees.",
+        "description": "Transform your bare yard with our planting services. Whether you need flowers, shrubs, or trees planted, we offer competitive industry rates for digging, planting, and fertilizing."
+    }
+]
