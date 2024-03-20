@@ -5,6 +5,7 @@ import { REQUEST_SERVICE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Services = () => {
+    const buttonText = 'Request Service';
     const [requestService] = useMutation(REQUEST_SERVICE);
 
     const handleRequestService = async (event, service) => {
@@ -20,6 +21,7 @@ const Services = () => {
             }
         })
         event.target.disabled=true;
+        event.target.textContent='Service Requested';
     }
 
     return (
