@@ -41,7 +41,6 @@ Clone this repository, then in the root directory run:
 - "npm run start" to start the back end
 - "npm run develop" to start front and back end
 
-
 ## Link to Deployed Application
 
 [Render Application](https://business-website-h48g.onrender.com/)
