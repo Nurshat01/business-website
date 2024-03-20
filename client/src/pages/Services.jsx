@@ -23,33 +23,37 @@ const Services = () => {
 
     return (
         <>
-        <div>
-            <h2>Our Services</h2>
+        <div className='content box'>
+            <h2 className='title box has-text-centered is-underlined has-background-grey-light'>Our Services</h2>
             <div className='columns'>
-                {serviceData.map((service) => {
-                    return <div className='column'>
-                    <div className='card'>
-                        <div className='card-image'>
+                {serviceData.map((service, i) => {
+                    return (
+                    <div className='column' key={i}>
+                    <div className='card has-background-grey-lighter' key={service.serviceName}>
+                        <div className='card-image pt-4'>
                             <figure className='image is-4by3'>
                                 <img src={service.serviceImage} alt='Placeholder' />
                             </figure>
                         </div>
                         <div className='card-content'>
                             <div className='media-content'>
-                                <p className='title is-4'>{service.serviceName}</p>
-                                <p className='subtitle is-6'>{service.price}</p>
+                                <p className='title pb-4 is-4 has-text-centered is-underlined'>{service.serviceName}</p>
+                                <p className='subtitle box is-6 has-text-centered'>Price: {service.price}</p>
                             </div>
-                            <div className='content box'>
+                            <div className='content mt-1 box has-text-centered'>
                                 {service.description}
                             </div>
                             {Auth.loggedIn()
-                            ? <div className='card-footer-item'>
+                            ? 
+                            
+                            <div className='card-footer-item'>
                                 <button className='card-footer-item button is-success' onClick={() => handleRequestService(service)}>Request Service</button>
                             </div>
                             : ""}
                         </div>
                     </div>
                 </div>
+                )
                 })};
             </div>
         </div>

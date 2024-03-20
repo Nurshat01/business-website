@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import backgroundImage from '../pages/background.jpg';
+import { useState, useEffect } from 'react';
+import backgroundImage from '/assets/homepageimage.jpg';
 
 const Home = () => {
   const backgroundStyles = {
