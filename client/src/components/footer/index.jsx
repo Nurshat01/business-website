@@ -11,8 +11,8 @@ const Footer = () => {
             <h4 className="title is-4 has-text-primary">
               <span className="emoji">😄</span> Contact Us
             </h4>
-            <p className="has-text-grey">123 Green Street</p>
-            <p className="has-text-grey">City, State, ZIP</p>
+            <p className="has-text-grey">123 Haven Street</p>
+            <p className="has-text-grey">Greenville, MO, 63944</p>
             <p className="has-text-grey">Email: admin@greenhaven.com</p>
             <p className="has-text-grey">Phone: 123-456-7890</p>
           </div>
