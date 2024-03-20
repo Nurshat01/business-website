@@ -1,49 +1,45 @@
 import React from 'react';
-import { Link, NavLink } from "react-router-dom";
+import Auth from '../../utils/auth';
 
 const Header = () => {
-  const handleLinkClick = (event) => {
-    const targetPath = event.target.pathname;
-    if (targetPath === '/about' || targetPath === '/contact') {
-      event.preventDefault();
-      // You can add more logic here if needed
-    }
-  };
-
   return (
     <header className="header">
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar has-background-grey-light" role="navigation" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
-            <Link to='/' className="navbar-item">
-              Your Company {" "}
-              <span role="img" aria-label="company">🏢</span>
-              <span className="fun-emoji" role="img" aria-label="fun">🤪</span>
-            </Link>
-            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <a className="navbar-item is-size-2 has-text-weight-bold has-text-primary is-italic" href="/">
+              Green Haven
+            </a>
+            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
           </div>
 
-          <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-menu">
             <div className="navbar-end">
-              <NavLink to='/' exact className="navbar-item" activeClassName="active" onClick={handleLinkClick}>
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/">
                 Home
-              </NavLink>
-              <Link to='/about' className="navbar-item" onClick={handleLinkClick}>
-                About {" "}
-                <span role="img" aria-label="about">📚</span>
-              </Link>
-              <NavLink to='/services' className="navbar-item" activeClassName="active" onClick={handleLinkClick}>
-                Services {" "}
-                <span role="img" aria-label="services">🔧</span>
-              </NavLink>
-              <NavLink to='/contact' className="navbar-item" activeClassName="active" onClick={handleLinkClick}>
-                Contact {" "}
-                <span role="img" aria-label="contact">📞</span>
-              </NavLink>
+              </a>
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/about">
+                About Us
+              </a>
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/services">
+                Services
+              </a>
+              {!Auth.loggedIn()
+              ? <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary has-background-grey-lighter" href="/loginsignup">
+                  Login/Signup
+                </a>
+              : <>
+                <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="#">
+                  My Service Requests
+                </a>
+                <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary has-background-grey-lighter" href="#">
+                  Logout
+                </a>
+                </>}
             </div>
           </div>
         </div>

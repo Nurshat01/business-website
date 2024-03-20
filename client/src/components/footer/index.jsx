@@ -20,10 +20,9 @@ const Footer = () => {
           <div className="column">
             <h4 className="title is-4 has-text-primary">Links</h4>
             <ul>
-              <li><a href="#" className="has-text-grey">Home</a></li>
-              <li><a href="#" className="has-text-grey">About Us</a></li>
-              <li><a href="#" className="has-text-grey">Services</a></li>
-              <li><a href="#" className="has-text-grey">Contact</a></li>
+              <li><a href="/" className="has-text-grey">Home</a></li>
+              <li><a href="/about" className="has-text-grey">About Us</a></li>
+              <li><a href="/services" className="has-text-grey">Services</a></li>
             </ul>
           </div>
           <div className="column">

@@ -7,8 +7,6 @@ import 'bulma/css/bulma.min.css';
 
 import Footer from '../src/components/footer';
 import Header from '../src/components/header';
-import Home from '../src/pages/Home';
-import Login from '../src/components/login';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,7 +35,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Login />
         <Header />
         <div>
           <Outlet />
