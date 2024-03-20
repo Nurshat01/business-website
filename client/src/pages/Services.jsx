@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 const Services = () => {
     const [requestService] = useMutation(REQUEST_SERVICE);
 
-    const handleRequestService = async (service) => {
+    const handleRequestService = async (event, service) => {
         console.log(service);
         await requestService({
             variables: {
@@ -19,6 +19,7 @@ const Services = () => {
                 }
             }
         })
+        event.target.disabled=true;
     }
 
     return (
@@ -45,9 +46,8 @@ const Services = () => {
                             </div>
                             {Auth.loggedIn()
                             ? 
-                            
                             <div className='card-footer-item'>
-                                <button className='card-footer-item button is-success' onClick={() => handleRequestService(service)}>Request Service</button>
+                                <button className='card-footer-item button is-success' onClick={(event) => handleRequestService(event, service)}>Request Service</button>
                             </div>
                             : ""}
                         </div>

@@ -15,11 +15,6 @@ const resolvers = {
 
             return users;
         }, 
-        // serviceRequests: async () => {
-        //     const serviceRequests = ServiceRequest.find();
-
-        //     return serviceRequests;
-        // }
     },
 
     Mutation: {

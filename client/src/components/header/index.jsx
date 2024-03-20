@@ -6,14 +6,14 @@ const Header = () => {
   
   return (
     <header className="header">
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar has-shadow" role="navigation" aria-label="main navigation">
         <div className="container">
-          <div className="navbar-brand">
+          <div className="navbar-brand my-3">
             <a className="navbar-item p-0 m-4" href="/">
               <figure>
-                <img className="image is-64x64" src="/assets/GreenHaven.jpg" alt="GreenHavenLogo" />
+                <img className="image" src="/assets/GreenHaven.jpg" alt="GreenHavenLogo" />
               </figure>
-              <p className='has-text-weight-bold ml-3 is-size-4 is-italic has-text-primary'>Green Haven Landscaping</p>
+              <p className='has-text-weight-bold ml-3 is-size-3 is-italic has-text-primary'>Green Haven Landscaping</p>
             </a>
             <a onClick={() => {setisActive(!isActive)}} role="button" className={`navbar-burger burger ${isActive ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false" data-target="navMenu">
               <span aria-hidden="true"></span>
