@@ -1,71 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import backgroundImage from '../pages/background.jpg';
 
 const Home = () => {
-  // const [selectedServices, setSelectedServices] = useState([]);
-  // const [cart, setCart] = useState([]);
+  const backgroundStyles = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
 
-  // const services = ['Service 1', 'Service 2', 'Service 3', 'Service 4'];
+  const [emojis, setEmojis] = useState([
+    { emoji: '🚗', top: '50%', left: '50%', opacity: 0 },
+    { emoji: '🚜', top: '50%', left: '50%', opacity: 0 },
+    { emoji: '🛤️', top: '50%', left: '50%', opacity: 0 },
+    { emoji: '🌳', top: '50%', left: '50%', opacity: 0 },
+    { emoji: '🌸', top: '50%', left: '50%', opacity: 0 },
+  ]);
 
-  // const handleServiceSelect = (service) => {
-  //   if (selectedServices.includes(service)) {
-  //     setSelectedServices(selectedServices.filter((s) => s !== service));
-  //   } else {
-  //     setSelectedServices([...selectedServices, service]);
-  //   }
-  // };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newEmojis = emojis.map((emoji) => ({
+        ...emoji,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        opacity: 1,
+      }));
+      setEmojis(newEmojis);
+    }, 2000);
 
-  // const addToCart = () => {
-  //   setCart([...cart, ...selectedServices]);
-  //   setSelectedServices([]);
-  // };
-
-  // const removeFromCart = (service) => {
-  //   setCart(cart.filter((item) => item !== service));
-  // };
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="hero is-fullheight is-bold has-background-primary" style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      <div className="hero-body">
+    <div className="hero is-fullheight is-bold" style={backgroundStyles}>
+      <div className="hero-body" style={{ position: 'relative' }}>
         <div className="container">
-          <h1 className="title">Welcome to My App</h1>
-          {/* <p className="subtitle">Select the services you're interested in:</p> */}
-          {/* <div className="columns is-multiline">
-            {services.map((service) => (
-              <div key={service} className="column is-one-quarter">
-                <label className="checkbox">
-                  <input type="checkbox" checked={selectedServices.includes(service)} onChange={() => handleServiceSelect(service)} />
-                  {service}
-                </label>
-              </div>
+          <h1 className="title is-1 has-text-centered" style={{ color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.6)', position: 'relative' }}>
+            Welcome to <span style={{ color: '#48c774' }}>Green Haven Landscaping</span>, where beauty meets nature!
+            {emojis.map((emoji, index) => (
+              <span
+                key={index}
+                role="img"
+                aria-label={emoji.emoji}
+                style={{
+                  position: 'absolute',
+                  top: emoji.top,
+                  left: emoji.left,
+                  opacity: emoji.opacity,
+                  fontSize: index === 0 || index === 1 ? '40px' : '30px',
+                  transition: 'top 2s, left 2s, opacity 0.5s',
+                }}
+              >
+                {emoji.emoji}
+              </span>
             ))}
-          </div> */}
-          {/* <button className="button is-primary" onClick={addToCart}>Add to Cart</button> */}
+          </h1>
         </div>
       </div>
-      {/* {cart.length > 0 && (
-        <div className="hero-foot">
-          <nav className="navbar is-light">
-            <div className="container">
-              <div className="navbar-end">
-                <div className="navbar-item">
-                  <div className="buttons">
-                    <button className="button is-primary" onClick={() => setCart([])}>Clear Cart</button>
-                    <button className="button is-primary">Checkout ({cart.length} items)</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-          <div className="container">
-            <h2 className="title is-4">Items in Cart:</h2>
-            <ul>
-              {cart.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };
