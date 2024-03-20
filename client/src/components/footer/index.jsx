@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import './footer.css'; // Assuming you have a separate CSS file for footer styles
@@ -12,9 +11,9 @@ const Footer = () => {
             <h4 className="title is-4 has-text-primary">
               <span className="emoji">😄</span> Contact Us
             </h4>
-            <p className="has-text-grey">123 Main Street</p>
+            <p className="has-text-grey">123 Green Street</p>
             <p className="has-text-grey">City, State, ZIP</p>
-            <p className="has-text-grey">Email: info@example.com</p>
+            <p className="has-text-grey">Email: admin@greenhaven.com</p>
             <p className="has-text-grey">Phone: 123-456-7890</p>
           </div>
           <div className="column">
@@ -41,17 +40,17 @@ const Footer = () => {
           </div>
           <div className="column">
             <h4 className="title is-4 has-text-primary">Follow Us</h4>
-            <ul className="social-icons is-flex">
-              <li><a href="#"><FontAwesomeIcon icon={faTwitter} className="fun-icon" /></a></li>
-              <li><a href="#"><FontAwesomeIcon icon={faFacebook} className="fun-icon" /></a></li>
-              <li><a href="#"><FontAwesomeIcon icon={faInstagram} className="fun-icon" /></a></li>
+            <ul className=" social-icons is-flex is-justify-content-center">
+              <li><a href="#"><FontAwesomeIcon icon={faTwitter} className="fun-icon mx-2" /></a></li>
+              <li><a href="#"><FontAwesomeIcon icon={faFacebook} className="fun-icon mx-2" /></a></li>
+              <li><a href="#"><FontAwesomeIcon icon={faInstagram} className="fun-icon mx-2" /></a></li>
             </ul>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <p className="has-text-grey">&copy; {new Date().getFullYear()} Your Company. All Rights Reserved.</p>
+          <p className="has-text-grey my-4">&copy; {new Date().getFullYear()} Green Haven Landscaping. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

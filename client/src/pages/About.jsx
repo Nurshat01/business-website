@@ -2,8 +2,8 @@ const About = () => {
 
     return (
         <div className="content box">
-            <h2 className='title has-text-centered is-underlined'>About Us</h2>
-            <div className="box is-size-5 has-text-black has-background-grey-lighter">
+            <h2 className='title box has-text-centered is-underlined has-background-grey-light'>About Us</h2>
+            <div className="box is-size-5 p-6 has-text-black has-background-grey-lighter">
                 <div className="block">
                     At Green Haven, we're passionate about creating stunning outdoor spaces that enrich the lives of our clients and harmonize with the environment. With over a decade of experience in the landscaping industry, we have established ourselves as a trusted name in transforming ordinary landscapes into extraordinary retreats.
                 </div>

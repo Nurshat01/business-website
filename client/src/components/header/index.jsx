@@ -1,42 +1,47 @@
-import React from 'react';
 import Auth from '../../utils/auth';
+import { useState } from 'react';
 
 const Header = () => {
+  const [isActive, setisActive] = useState(false)
+  
   return (
     <header className="header">
-      <nav className="navbar has-background-grey-light" role="navigation" aria-label="main navigation">
+      <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
-            <a className="navbar-item is-size-2 has-text-weight-bold has-text-primary is-italic" href="/">
-              Green Haven
+            <a className="navbar-item p-0 m-4" href="/">
+              <figure>
+                <img className="image is-64x64" src="/assets/GreenHaven.jpg" alt="GreenHavenLogo" />
+              </figure>
+              <p className='has-text-weight-bold ml-3 is-size-4 is-italic has-text-primary'>Green Haven Landscaping</p>
             </a>
-            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <a onClick={() => {setisActive(!isActive)}} role="button" className={`navbar-burger burger ${isActive ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false" data-target="navMenu">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
           </div>
 
-          <div className="navbar-menu">
+          <div id="navMenu" className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
             <div className="navbar-end">
-              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/">
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary" href="/">
                 Home
               </a>
-              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/about">
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary" href="/about">
                 About Us
               </a>
-              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="/services">
+              <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary" href="/services">
                 Services
               </a>
               {!Auth.loggedIn()
-              ? <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary has-background-grey-lighter" href="/loginsignup">
+              ? <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary" href="/loginsignup">
                   Login/Signup
                 </a>
               : <>
-                <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary has-background-grey-lighter" href="#">
+                <a className="navbar-item has-text-weight-semibold mr-1 is-size-4 has-text-primary" href="/myservicerequests">
                   My Service Requests
                 </a>
-                <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary has-background-grey-lighter" href="#">
+                <a className="navbar-item has-text-weight-semibold is-size-4 has-text-primary"onClick={Auth.logout}  href="/">
                   Logout
                 </a>
                 </>}

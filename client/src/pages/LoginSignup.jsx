@@ -10,8 +10,8 @@ const LoginSignup = () => {
   const [loginFormData, setLoginFormData] = useState({ email: '', password: '' });
   const [signupFormData, setsignupFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
 
-  const [signupUser] = useMutation(ADD_USER);
-  const [loginUser] = useMutation(LOGIN);
+  const [addUser] = useMutation(ADD_USER);
+  const [login] = useMutation(LOGIN);
 
   const handleLoginInputChange = (event) => {
     const { name, value } = event.target;
@@ -25,13 +25,16 @@ const LoginSignup = () => {
   };
 
   const handleLogin = async () => {
+    console.log('handle signup clicked');
 
     try {
-      const { data } = await loginUser({
+      const response = await login({
         variables: { ...loginFormData },
       });
 
-      Auth.login(data.loginUser.token);
+      const token = response.data.login.token
+
+      Auth.login(token);
     } catch (e) {
       console.error(e);
     }
@@ -46,23 +49,25 @@ const LoginSignup = () => {
     console.log('handle signup clicked');
 
     try { 
-      const { data } = await signupUser({
+      const response = await addUser({
         variables: { ...signupFormData },
       });
       console.log(signupFormData);
-      console.log(data);
+      console.log(response);
 
-      Auth.login(data.signupUser.token);
+      const token = response.data.addUser.token
+
+      Auth.login(token);
     } catch (e) {
       console.error(e);
     }
 
-    // setsignupFormData({
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   password: '',
-    // });
+    setsignupFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    });
   };
 
   return (
@@ -99,7 +104,7 @@ const LoginSignup = () => {
                   </div>
               </div>
               <div className='card-footer-item'>
-                <button type='submit' className='card-footer-item button is-primary' disabled={!(loginFormData.email && loginFormData.password)} onClick={() => handleLogin}>Login</button>
+                <button type='submit' className='card-footer-item button is-primary' disabled={!(loginFormData.email && loginFormData.password)} onClick={handleLogin}>Login</button>
               </div>
             </div>
           </div>
@@ -159,7 +164,7 @@ const LoginSignup = () => {
                   </div>
               </div>
               <div className='card-footer-item'>
-                <button type='submit' className='card-footer-item button is-primary' disabled={!(signupFormData.firstName && signupFormData.lastName && signupFormData.email && signupFormData.password)} onClick={() => handleSignup()}>Signup</button>
+                <button type='submit' className='card-footer-item button is-primary' disabled={!(signupFormData.firstName && signupFormData.lastName && signupFormData.email && signupFormData.password)} onClick={handleSignup}>Signup</button>
               </div>
             </div>
           </div>
