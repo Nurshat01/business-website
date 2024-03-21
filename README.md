@@ -57,3 +57,5 @@ Clone this repository, then in the root directory run:
 ![image](https://github.com/Nurshat01/business-website/assets/98727619/3d1091de-b307-4331-b3d3-0d437e9dbdaf)
 ### Login / Signup
 ![image](https://github.com/Nurshat01/business-website/assets/98727619/c53ed68e-1916-4e91-87ff-a54bc3589a2a)
+
+Link to slideshow presentation: https://docs.google.com/presentation/d/1PsORIYf2HyFl4akuLYlYUnIhnE4mgShaSt91Srb7qRM/edit#slide=id.g26b96afde75_0_129
